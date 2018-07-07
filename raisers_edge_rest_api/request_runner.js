@@ -18,9 +18,7 @@ exports.performRequest = (url, verb = 'GET', request_body) => new Promise((resol
         url,
         headers,
         json: request_body,
-        rejectUnauthorized: false, // TODO: resolve the lack on the reverse proxy
       };
-      console.log(url); // TODO: remove this
 
       request(options, (error, response, body) => {
         if (error) {
