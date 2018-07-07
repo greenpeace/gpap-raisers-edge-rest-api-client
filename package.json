@@ -11,7 +11,16 @@
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.13.0"
   },
+  "scripts": {
+    "test": "mocha --recursive --exit"
+  },
   "dependencies": {
-    "cloud-functions-runtime-config": "^0.4.0"
+    "assert": "^1.4.1",
+    "cloud-functions-runtime-config": "^0.4.0",
+    "gpap-pipeline-gcp-clients": "git+ssh://git@github.com:greenpeace/gpap-pipeline-gcp-clients.git#28dc7da",
+    "mocha": "^5.2.0",
+    "request": "^2.87.0",
+    "rewire": "^4.0.1",
+    "util": "^0.11.0"
   }
 }

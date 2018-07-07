@@ -11,16 +11,16 @@ const runner = require('./request_runner');
  *
  */
 function BuildEndpoints() {
-	const out = {};
-	for (const resource_type of Object.keys(endpoints)) {
-		out[resource_type] = {};
-		for (const endpoint of Object.keys(endpoints[resource_type])) {
-			const endpoint_description = endpoints[resource_type][endpoint];
-			out[resource_type][endpoint] = CallRESTEndpoint.bind(null, endpoint_description);
-		}
-	} // TODO: optimize this so the linter doesn't complain. Maybe ask Peter!
+  const out = {};
+  for (const resource_type of Object.keys(endpoints)) {
+    out[resource_type] = {};
+    for (const endpoint of Object.keys(endpoints[resource_type])) {
+      const endpoint_description = endpoints[resource_type][endpoint];
+      out[resource_type][endpoint] = CallRESTEndpoint.bind(null, endpoint_description);
+    }
+  } // TODO: optimize this so the linter doesn't complain. Maybe ask Peter!
 
-	return out;
+  return out;
 }
 
 /**
@@ -30,9 +30,9 @@ function BuildEndpoints() {
  * @param {...String} parameters - The remaining N arguments are strings that will be formatted into the endpoint string (defined in ./endpoints)
  */
 async function CallRESTEndpoint(endpoint_description, body_data, ...parameters) {
-	const endpoint = endpoint_description.endpoint(...parameters);
-	const result = await runner.performRequest(endpoint, endpoint_description.method, body_data);
-	return result;
+  const endpoint = endpoint_description.endpoint(...parameters);
+  const result = await runner.performRequest(endpoint, endpoint_description.method, body_data);
+  return result;
 }
 
 
