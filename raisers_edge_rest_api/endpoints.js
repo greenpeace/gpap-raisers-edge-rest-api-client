@@ -1,9 +1,6 @@
 const util = require('util');
 
-// =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-//								Templated REST API Host
-// =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-const RaisersEdge_RESTAPI_Host = process.env.RAISERS_REST_HOST || 'https://raisersedge.greenpeace.org.au';
+const RaisersEdge_RESTAPI_Host = 'https://raisersedge.greenpeace.org.au';
 
 // =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 //								Endpoints defined by the API
