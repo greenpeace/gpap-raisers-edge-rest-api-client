@@ -1,5 +1,5 @@
-const endpoints = require('./endpoints');
-const runner = require('./request_runner');
+const endpoints = require('./raisers_edge_rest_api/endpoints');
+const runner = require('./raisers_edge_rest_api/request_runner');
 
 /**
  * This function iterates through the endpoint definitions in ./endpoints and adds them to a callable object (which is exported by this module).

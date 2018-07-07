@@ -1,6 +1,6 @@
 const assert = require('assert');
 const moment = require('moment');
-const { RaisersEdgeRestAPI } = require('../raisers_edge_rest_api');
+const { RaisersEdgeRestAPI } = require('../../index');
 
 describe('Raisers Edge REST API Client', () => {
   describe('Constituent endpoints', () => {
