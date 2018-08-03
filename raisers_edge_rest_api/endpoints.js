@@ -68,7 +68,7 @@ exports.Constituent = {
         method: 'PUT',
     },
     Search: {
-        endpoint: where => util.format('%s/constituents?where=%s', RaisersEdge_RESTAPI_Host, where),
+        endpoint: (where, query_params = '') => util.format('%s/constituents?where=%s&%s', RaisersEdge_RESTAPI_Host, where, query_params),
         method: 'GET',
     },
 };
@@ -116,7 +116,7 @@ exports.Gift = {
         method: 'PUT',
     },
     Search: {
-        endpoint: where => util.format('%s/gifts?where=%s', RaisersEdge_RESTAPI_Host, where),
+        endpoint: (where, query_params = '') => util.format('%s/gifts?where=%s&%s', RaisersEdge_RESTAPI_Host, where, query_params),
         method: 'GET',
     },
 };
