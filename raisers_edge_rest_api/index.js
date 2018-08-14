@@ -30,6 +30,18 @@ function BuildEndpoints() {
     return out;
 }
 
+/**
+ * Pull data out of the args array and send it to the endpoint.
+ * @param {Object} endpoint_description - the first argument is an Object that describes the endpoint
+ * @param {Object|null} body_data - The second argument is an Object that will be sent as the body of the request
+ * @param {...String} parameters - The remaining N arguments are strings that will be formatted into the endpoint string (defined in ./endpoints)
+ */
+async function CallRESTEndpoint(endpoint_description, body_data, ...parameters) {
+    const endpoint = endpoint_description.endpoint(...parameters);
+    const result = await runner.performRequest(endpoint, endpoint_description.method, body_data);
+    HandleRaisersEdgeRESTAPIErrors(result);
+    return result;
+}
 
 /**
  * The default behaviour of the Raiser's Edge REST API on an error is very UN-opinionated.
@@ -42,29 +54,19 @@ function BuildEndpoints() {
 function HandleRaisersEdgeRESTAPIErrors(result) {
     const { error, body, response } = result;
     if (response.statusCode === http_status_codes.INTERNAL_SERVER_ERROR && body.error !== undefined) {
-        console.log(response.url);
         throw new Error(body.error);
+    }
+
+    // Catch all server error status codes and throw the body
+    const server_error_status_space = 500;
+    if (response.statusCode >= server_error_status_space) {
+        throw new Error({ error, body });
     }
 
     // it is unlikely that this will be reached
     if (error) {
         throw new Error(error);
     }
-}
-
-/**
- * Pull data out of the args array and send it to the endpoint.
- * @param {Object} endpoint_description - the first argument is an Object that describes the endpoint
- * @param {Object|null} body_data - The second argument is an Object that will be sent as the body of the request
- * @param {...String} parameters - The remaining N arguments are strings that will be formatted into the endpoint string (defined in ./endpoints)
- */
-async function CallRESTEndpoint(endpoint_description, body_data, ...parameters) {
-    const endpoint = endpoint_description.endpoint(...parameters);
-    const result = await runner.performRequest(endpoint, endpoint_description.method, body_data);
-
-    HandleRaisersEdgeRESTAPIErrors(result);
-
-    return result;
 }
 
 
