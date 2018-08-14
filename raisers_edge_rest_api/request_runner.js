@@ -1,27 +1,9 @@
 const request = require('request');
-const { DataStoreUtils } = require('gpap-pipeline-gcp-clients/gcp_clients/datastore_client');
-
+const { DataStoreUtils } = require('../../gcp_clients/datastore_client');
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 //									 	Worker function
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-/**
- * Obtain the current JWT token for the Raiser's Edge REST API from DataStore.
- * This must have already been set up. TODO: write some functionality to automate this process.
- */
-function getJWTAuthorizationHeaders() {
-    return new Promise((resolve, reject) => {
-        DataStoreUtils.GetAPIKey('Raisers_Edge_REST_API_key')
-            .then((api_key) => {
-                resolve({
-                    Authorization: `Bearer ${api_key}`,
-                });
-            })
-            .catch((error) => {
-                reject(error);
-            });
-    });
-}
 /**
  * The generic function which makes calls to the Raisers Edge REST API.
  * @param {String} url
@@ -54,3 +36,28 @@ exports.performRequest = (url, verb = 'GET', request_body) => new Promise((resol
             });
         });
 });
+
+
+/**
+ * Obtain the current JWT token for the Raiser's Edge REST API from DataStore.
+ * This must have already been set up. TODO: write some functionality to automate this process.
+ */
+function getJWTAuthorizationHeaders() {
+    return new Promise((resolve, reject) => {
+        if (process.env.RAISERS_EDGE_REST_API_KEY) {
+            resolve({
+                Authorization: `Bearer ${process.env.RAISERS_EDGE_REST_API_KEY}`,
+            });
+        } else {
+            DataStoreUtils.GetAPIKey('Raisers_Edge_REST_API_key')
+                .then((api_key) => {
+                    resolve({
+                        Authorization: `Bearer ${api_key}`,
+                    });
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        }
+    });
+}
