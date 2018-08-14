@@ -1,5 +1,6 @@
 const request = require('request');
-const { DataStoreUtils } = require('../../gcp_clients/datastore_client');
+const { DataStoreUtils } = require('gpap-pipeline-gcp-clients/gcp_clients/datastore_client');
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 //									 	Worker function
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
