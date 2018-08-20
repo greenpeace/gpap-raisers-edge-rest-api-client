@@ -1,7 +1,7 @@
 const http_status_codes = require('http-status-codes');
-const endpoints = require('./endpoints');
-const runner = require('./request_runner');
-const schema = require('./schema');
+const endpoints = require('./raisers_edge_rest_api/endpoints');
+const runner = require('./raisers_edge_rest_api/request_runner');
+const schema = require('./raisers_edge_rest_api/schema');
 
 /**
  * The `Schema` property makes the schema used by Raisers Edge REST API available programatically.
