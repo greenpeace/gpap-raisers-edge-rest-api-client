@@ -1,7 +1,8 @@
 
 const util = require('util');
 
-const RaisersEdge_RESTAPI_Host = 'https://raisersedge.greenpeace.org.au';
+const is_production = process.env.ENVIRONMENT && process.env.ENVIRONMENT === 'PRODUCTION';
+const RaisersEdge_RESTAPI_Host = process.env.RAISERS_REST_HOST || (is_production ? 'https://raisersedge.greenpeace.org.au' : 'https://raisersedgestaging.greenpeace.org.au');
 // =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 //								Endpoints defined by the API
 // =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
