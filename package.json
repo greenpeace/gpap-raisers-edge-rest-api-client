@@ -19,10 +19,13 @@
     "cloud-functions-runtime-config": "^0.4.0",
     "gpap-pipeline-gcp-clients": "git://github.com/greenpeace/gpap-pipeline-gcp-clients.git#28dc7da",
     "http-status-codes": "^1.3.0",
+    "lodash": "^4.17.10",
     "mocha": "^5.2.0",
     "moment": "^2.22.2",
     "request": "^2.87.0",
     "rewire": "^4.0.1",
-    "util": "^0.11.0"
+    "util": "^0.11.0",
+    "uuid": "^3.3.2",
+    "winston": "^3.1.0"
   }
 }
