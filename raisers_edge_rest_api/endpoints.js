@@ -1,6 +1,8 @@
 
 const util = require('util');
 
+const { encodeSQL } = require('./avoid_sqli');
+
 const is_production = process.env.ENVIRONMENT && process.env.ENVIRONMENT === 'PRODUCTION';
 const RaisersEdge_RESTAPI_Host = process.env.RAISERS_REST_HOST || (is_production ? 'https://raisersedge.greenpeace.org.au' : 'https://raisersedgestaging.greenpeace.org.au');
 // =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
@@ -44,7 +46,7 @@ exports.Bank = {
 };
 exports.Banks = {
     Search: {
-        endpoint: where => util.format('%s/banks?where=%s', RaisersEdge_RESTAPI_Host, where),
+        endpoint: where => util.format('%s/banks?is_base64=1&where=%s', RaisersEdge_RESTAPI_Host, encodeSQL(where)),
         method: 'GET',
     },
 };
@@ -68,7 +70,7 @@ exports.Constituent = {
         method: 'PUT',
     },
     Search: {
-        endpoint: (where, query_params = '') => util.format('%s/constituents?where=%s&%s', RaisersEdge_RESTAPI_Host, where, query_params),
+        endpoint: (where, query_params = '') => `${RaisersEdge_RESTAPI_Host}/constituents?is_base64=1&where=${encodeSQL(where)}${query_params.length > 0 ? `&${query_params}` : ''}`,
         method: 'GET',
     },
 };
@@ -116,7 +118,7 @@ exports.Gift = {
         method: 'PUT',
     },
     Search: {
-        endpoint: (where, query_params = '') => util.format('%s/gifts?where=%s&%s', RaisersEdge_RESTAPI_Host, where, query_params),
+        endpoint: (where, query_params = '') => `${RaisersEdge_RESTAPI_Host}/gifts?is_base64=1&where=${encodeSQL(where)}${query_params.length > 0 ? `&${query_params}` : ''}`,
         method: 'GET',
     },
 };
