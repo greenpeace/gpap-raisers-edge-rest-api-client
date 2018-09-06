@@ -15,6 +15,7 @@
     "test": "mocha --recursive --exit"
   },
   "dependencies": {
+    "@google-cloud/logging-winston": "^0.9.0",
     "assert": "^1.4.1",
     "cloud-functions-runtime-config": "^0.4.0",
     "gpap-pipeline-gcp-clients": "git://github.com/greenpeace/gpap-pipeline-gcp-clients.git#28dc7da",
