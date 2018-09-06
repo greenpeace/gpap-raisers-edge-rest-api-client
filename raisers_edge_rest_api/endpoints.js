@@ -2,9 +2,13 @@
 const util = require('util');
 
 const { encodeSQL } = require('./avoid_sqli');
+const logger = require('./logger');
 
 const is_production = process.env.ENVIRONMENT && process.env.ENVIRONMENT === 'PRODUCTION';
 const RaisersEdge_RESTAPI_Host = process.env.RAISERS_REST_HOST || (is_production ? 'https://raisersedge.greenpeace.org.au' : 'https://raisersedgestaging.greenpeace.org.au');
+
+logger.info(`Raisers Edge REST API Host is: ${RaisersEdge_RESTAPI_Host}`);
+
 // =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 //								Endpoints defined by the API
 // =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
