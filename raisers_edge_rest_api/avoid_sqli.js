@@ -4,4 +4,6 @@
  * When sending certain SQL statements, Cloudflare block
  * @param {String} where_clause
  */
-exports.encodeSQL = where_clause => Buffer.from(where_clause).toString('base64');
+exports.encodeSQL = where_clause => encodeURIComponent(Buffer.from(where_clause).toString('base64'));
+
+
