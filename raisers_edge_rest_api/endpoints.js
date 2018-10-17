@@ -8,7 +8,7 @@ const logger = require('./logger');
 const dotEnvPath = path.resolve('./.env');
 require('dotenv').config({ path: dotEnvPath });
 
-const is_production = process.env.ENVIRONMENT && process.env.ENVIRONMENT === 'PRODUCTION';
+const is_production = process.env.ENVIRONMENT && (process.env.ENVIRONMENT === 'PRODUCTION' || process.env.ENVIRONMENT === 'production');
 const RaisersEdge_RESTAPI_Host = process.env.RAISERS_REST_HOST || (is_production ? 'https://raisersedge.greenpeace.org.au' : 'https://raisersedgestaging.greenpeace.org.au');
 
 logger.info(`Raisers Edge REST API Host is: ${RaisersEdge_RESTAPI_Host}`);
