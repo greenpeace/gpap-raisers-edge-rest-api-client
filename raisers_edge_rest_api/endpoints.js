@@ -39,6 +39,10 @@ exports.AttributeTypeServer = {
         endpoint: attribute_type_id => util.format('%s/attributetypeserver/uniqueness/%s', RaisersEdge_RESTAPI_Host, attribute_type_id),
         method: 'GET',
     },
+    ReadCodeTables: {
+        endpoint: attribute_type_id => util.format('%s/attributetypeserver/codetables/%s', RaisersEdge_RESTAPI_Host, attribute_type_id),
+        method: 'GET',
+    },
 };
 exports.Attributes = {
     Create: {
