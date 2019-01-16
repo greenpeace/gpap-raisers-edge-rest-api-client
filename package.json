@@ -1,6 +1,6 @@
 {
   "name": "gpap-raisers-edge-rest-api-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A client library for interacting with the Raisers Edge REST API",
   "main": "index.js",
   "repository": "git@github.com:greenpeace/gpap-raisers-edge-rest-api-client.git",
@@ -15,7 +15,7 @@
     "test": "mocha --recursive --exit"
   },
   "dependencies": {
-    "@google-cloud/logging-winston": "^0.9.0",
+    "@google-cloud/logging-winston": "^0.10.2",
     "assert": "^1.4.1",
     "cloud-functions-runtime-config": "^0.4.0",
     "dotenv": "^6.0.0",

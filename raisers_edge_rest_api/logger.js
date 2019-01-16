@@ -8,12 +8,12 @@ const { Console } = winston.transports;
 const loggingWinston = new LoggingWinston();
 
 const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.json(),
+    // level: 'info',
+    // format: winston.format.json(),
     transports: [
         loggingWinston, // Log to stackdriver
     ],
-    prettyPrint: JSON.stringify,
+    // prettyPrint: JSON.stringify,
 });
 
 if (process.env.NODE_ENV !== 'production') {
